@@ -11,7 +11,7 @@ Run this file with Python. Make any necessary changes so all assertion tests pas
 
 from flask import Flask
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder="my_templates")
 
 if __name__ == '__main__':
     assert app.template_folder == "my_templates"

@@ -13,7 +13,7 @@ from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
-TEMPLATE = "{% if stock %}In Stock{% endif %}"
+TEMPLATE = "{% if stock %}In Stock{% else %}Out of Stock{% endif %}"
 
 def render_stock(count: int) -> str:
     with app.app_context():

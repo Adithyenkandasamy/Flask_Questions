@@ -18,7 +18,7 @@ TEMPLATE = "<ul>{% for item in items %}<li>{{ item }}</li>{% endfor %}</ul>"
 @app.route("/items")
 def items_view():
     items = ["Phone", "Laptop"]
-    return render_template_string(TEMPLATE)
+    return render_template_string(TEMPLATE,items=items)
 
 def test_items_view():
     with app.test_client() as client:

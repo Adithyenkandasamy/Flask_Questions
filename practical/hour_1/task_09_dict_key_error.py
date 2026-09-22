@@ -10,7 +10,7 @@ Run this file with Python. Make any necessary changes so all assertion tests pas
 """
 
 def get_item_barcode(item_dict: dict) -> str:
-    return item_dict['barcode']
+    return item_dict.get("barcode","N/A")
 
 if __name__ == '__main__':
     item_without_code = {"id": 1, "name": "Book"}

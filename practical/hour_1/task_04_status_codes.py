@@ -9,14 +9,14 @@ Configure the item endpoint to return a 404 status code with message 'Item not f
 Run this file with Python. Make any necessary changes so all assertion tests pass!
 """
 
-from flask import Flask
+from flask import Flask, abort
 
 app = Flask(__name__)
 
 @app.route("/item/<name>")
 def item_page(name):
     if name != "phone":
-        return "Item not found"
+        abort(404,description="Item not found")
     return "Found item"
 
 def test_status_code():
@@ -28,3 +28,5 @@ def test_status_code():
 if __name__ == '__main__':
     test_status_code()
     print("✓ Task 04 passed!")
+
+# Done NOt like Fastapi HTTPExection it will work with the abort function inside that we can mention the thing we need to give responce

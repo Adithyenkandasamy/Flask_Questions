@@ -9,9 +9,9 @@ Initialize a Flask application instance properly so that it exports an `app` obj
 Run this file with Python. Make any necessary changes so all assertion tests pass!
 """
 
-from flask import flask
+from flask import Flask
 
-app = None
+app = Flask("Test")
 
 def get_app():
     return app
@@ -20,3 +20,5 @@ if __name__ == '__main__':
     assert get_app() is not None, "App should be initialized"
     assert get_app().import_name is not None
     print("✓ Task 01 passed!")
+
+# Done

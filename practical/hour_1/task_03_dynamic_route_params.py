@@ -14,8 +14,9 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route("/about/<username>")
-def about_page():
-    return "<h1>About Page</h1>"
+def about_page(username):
+    
+    return f"<h1>About Page of {username}</h1>"
 
 def test_dynamic_route():
     with app.test_client() as client:
@@ -26,3 +27,5 @@ def test_dynamic_route():
 if __name__ == '__main__':
     test_dynamic_route()
     print("✓ Task 03 passed!")
+
+# Done -> After Getting the value from the api request we need to get that from a parameter in the function like "def app(name)""

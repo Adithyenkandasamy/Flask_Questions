@@ -13,9 +13,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("home")
+@app.route("/home")
 def home():
-    return 200
+    return {"message":"Welcome to Flask Market!"}
 
 def test_route():
     with app.test_client() as client:
@@ -26,3 +26,5 @@ def test_route():
 if __name__ == '__main__':
     test_route()
     print("✓ Task 02 passed!")
+
+#Done - > Here it Return 200 by default

@@ -11,10 +11,12 @@ Run this file with Python. Make any necessary changes so all assertion tests pas
 
 def is_safe_for_production(debug_mode_value: str) -> bool:
     if debug_mode_value in ('1', 'True', 'true'):
-        return True
-    return False
+        return False
+    return True
 
 if __name__ == '__main__':
     assert is_safe_for_production('1') is False, "Debug mode 1 is NOT safe for production"
     assert is_safe_for_production('0') is True, "Debug mode 0 IS safe for production"
     print("✓ Task 05 passed!")
+
+# Done

@@ -26,10 +26,13 @@ def get_expensive_items():
         db.create_all()
         db.session.add_all([Item(name="Pen", price=5), Item(name="Phone", price=500), Item(name="Laptop", price=1200)])
         db.session.commit()
-        return Item.query.all()
+        return Item.query.filter(Item.price >= 500).all()
 
 if __name__ == '__main__':
     items = get_expensive_items()
     assert len(items) == 2
     assert all(i.price >= 500 for i in items)
     print("✓ Task 27 passed!")
+
+
+#         return Item.query.filter(Item.price >= 500).all() use this with filter we can mention the condition things

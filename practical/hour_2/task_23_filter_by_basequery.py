@@ -25,7 +25,7 @@ def find_item():
         db.create_all()
         db.session.add(Item(barcode='123456789012'))
         db.session.commit()
-        return Item.query.filter_by(barcode='123456789012')
+        return Item.query.filter_by(barcode='123456789012').first()
 
 if __name__ == '__main__':
     result = find_item()

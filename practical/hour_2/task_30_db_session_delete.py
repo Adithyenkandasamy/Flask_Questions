@@ -21,7 +21,8 @@ class Item(db.Model):
     name = db.Column(db.String(30))
 
 def delete_item(item: Item):
-    pass
+    db.session.delete(item)
+    db.session.commit()
 
 if __name__ == '__main__':
     with app.app_context():
@@ -33,3 +34,6 @@ if __name__ == '__main__':
         delete_item(item)
         assert Item.query.filter_by(id=item_id).first() is None
     print("✓ Task 30 passed!")
+
+
+#  we use the db.session.deslete(the item top be deleted) use this for the deletion thing

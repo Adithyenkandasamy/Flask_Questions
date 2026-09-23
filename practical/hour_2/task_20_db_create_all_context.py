@@ -20,10 +20,13 @@ class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
 
 def setup_db():
-    db.create_all()
+    with app.app_context():
+        db.create_all()
 
 if __name__ == '__main__':
     setup_db()
     with app.app_context():
         assert db.engine.dialect.has_table(db.engine.connect(), "item")
     print("✓ Task 20 passed!")
+
+# For all Db Accessing things we need to use the app.capp_context() ok 

@@ -20,7 +20,13 @@ class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(30), nullable=False)
 
+    def __repr__(self):
+        return f"Item {self.name}"
+
 if __name__ == '__main__':
     item = Item(name="Phone")
     assert repr(item) == "Item Phone"
     print("✓ Task 24 passed!")
+
+
+# if u have any doubt just use the google to see the repr usage cuz its little confusing

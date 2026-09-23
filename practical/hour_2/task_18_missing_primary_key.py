@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 db = SQLAlchemy(app)
 
 class Item(db.Model):
+    id = db.Column(db.Integer(),primary_key=True,nullable=False)
     name = db.Column(db.String(30), nullable=False)
     price = db.Column(db.Integer(), nullable=False)
 

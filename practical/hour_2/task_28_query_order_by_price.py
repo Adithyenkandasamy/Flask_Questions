@@ -26,9 +26,11 @@ def get_sorted_items():
         db.create_all()
         db.session.add_all([Item(name="Phone", price=500), Item(name="Laptop", price=1200), Item(name="Mouse", price=50)])
         db.session.commit()
-        return Item.query.all()
+        return Item.query.order_by(Item.price.desc()).all()
 
 if __name__ == '__main__':
     items = get_sorted_items()
     assert [i.price for i in items] == [1200, 500, 50]
     print("✓ Task 28 passed!")
+
+#  here we can use this return Item.query.order_by(Item.price.desc()).all() like instead of filter we cazn use the order_by()then our things and .desc()or .asce() to orde it 

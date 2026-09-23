@@ -18,7 +18,7 @@ db = SQLAlchemy(app)
 
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    barcode = db.Column(db.String(12))
+    barcode = db.Column(db.String(12),unique=True,nullable=False)
 
 if __name__ == '__main__':
     with app.app_context():

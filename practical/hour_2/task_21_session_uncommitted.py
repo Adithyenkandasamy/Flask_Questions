@@ -25,6 +25,7 @@ def create_item(name: str):
         db.create_all()
         item = Item(name=name)
         db.session.add(item)
+        db.session.commit()
 
 if __name__ == '__main__':
     create_item("Keyboard")
@@ -32,3 +33,5 @@ if __name__ == '__main__':
         saved = Item.query.filter_by(name="Keyboard").first()
         assert saved is not None, "Item must be saved to the database"
     print("✓ Task 21 passed!")
+
+# After The Savign Things Happen Just do the Commit Like Github 😁

@@ -23,10 +23,14 @@ class Item(db.Model):
 def safe_add(name: str) -> bool:
     with app.app_context():
         db.create_all()
-        item = Item(name=name)
-        db.session.add(item)
-        db.session.commit()
-        return True
+        try:
+            item = Item(name=name)
+            db.session.add(item)
+            db.session.commit()
+            return True
+        except Exception:
+            db.session.rollback()
+            return False   
 
 if __name__ == '__main__':
     with app.app_context():
@@ -34,3 +38,5 @@ if __name__ == '__main__':
         assert safe_add("Unique1") is True
         assert safe_add("Unique1") is False
     print("✓ Task 22 passed!")
+
+#  Use the try as try: and except thinsg and expect Exception 

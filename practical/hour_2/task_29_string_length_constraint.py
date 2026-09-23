@@ -18,7 +18,7 @@ db = SQLAlchemy(app)
 
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    description = db.Column(db.String())
+    description = db.Column(db.String(1024),nullable=False,unique=True)
 
 if __name__ == '__main__':
     col = Item.__table__.columns['description']

@@ -15,13 +15,18 @@ app = Flask(__name__)
 
 @app.route("/store/items")
 def market_page():
+    print("2")
     return "Market Items"
 
 def get_market_url():
     with app.test_request_context():
-        return url_for('/store/items')
+        print("1")
+        return url_for('market_page')
 
 if __name__ == '__main__':
     url = get_market_url()
     assert url == "/store/items"
+    print("3")
     print("✓ Task 16 passed!")
+
+# It will used in the html to get the url thing which will be dynamically modified by the developer so we can use this to fetch the url and after clicking that to get to the page liek this "<a href="{{ url_for('market_page') }}">Go to the Store Market</a>"

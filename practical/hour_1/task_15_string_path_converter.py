@@ -13,7 +13,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/files/<filepath>")
+@app.route("/files/<path:filepath>")
 def get_file(filepath):
     return f"Path: {filepath}"
 

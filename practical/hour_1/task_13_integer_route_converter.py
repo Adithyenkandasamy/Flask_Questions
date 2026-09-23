@@ -9,13 +9,15 @@ Configure a route '/item/<int:item_id>' so that requests with non-integer segmen
 Run this file with Python. Make any necessary changes so all assertion tests pass!
 """
 
+from flask import abort
 from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/item/<item_id>")
+@app.route("/item/<int:item_id>")
 def show_item(item_id):
     return f"Item ID: {item_id}"
+
 
 def test_converter():
     with app.test_client() as client:
@@ -27,3 +29,18 @@ def test_converter():
 if __name__ == '__main__':
     test_converter()
     print("✓ Task 13 passed!")
+
+
+# Solution:
+"""
+Like We Can DO in Another Way
+But We Can Directly use like this "<int:item_id>"
+
+@app.route("/item/<item_id>")
+def show_item(item_id):
+    if item_id.isdigit():
+        return f"Item ID: {item_id}"
+    else:
+        abort(404)
+
+"""

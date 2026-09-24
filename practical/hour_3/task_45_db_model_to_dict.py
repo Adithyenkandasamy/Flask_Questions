@@ -21,6 +21,9 @@ class Item(db.Model):
     name = db.Column(db.String(30))
     price = db.Column(db.Integer())
 
+    def to_dict(self):
+        return {"id":self.id, "name":self.name, "price":self.price}
+
 if __name__ == '__main__':
     item = Item(id=1, name="Keyboard", price=45)
     assert hasattr(item, 'to_dict'), "Model must define to_dict method"

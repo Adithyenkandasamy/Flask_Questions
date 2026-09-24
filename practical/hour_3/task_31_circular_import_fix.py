@@ -22,11 +22,12 @@ class PackageInit:
         self.routes_loaded = True
 
     def run_setup(self):
-        self.initialize()
         self.app = Flask(__name__)
+        self.initialize() # it willnever run when it is first cuz it will get the runtime error
+        
 
 if __name__ == '__main__':
-    pkg = PackageInit()
+    pkg = PackageInit()  # it is a object created with class name 
     try:
         pkg.run_setup()
     except RuntimeError:

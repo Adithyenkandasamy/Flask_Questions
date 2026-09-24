@@ -25,7 +25,7 @@ class Item(db.Model):
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 def set_owner(item: Item, user: User):
-    item.owner = user
+    item.owner = user.id
 
 if __name__ == '__main__':
     with app.app_context():

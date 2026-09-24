@@ -11,6 +11,7 @@ Run this file with Python. Make any necessary changes so all assertion tests pas
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
@@ -20,10 +21,15 @@ class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     items = db.relationship('Item', backref='owned_user', lazy=True)
 
+    @property
+    def item_count(self):
+        return len(self.items)
+
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
+        
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

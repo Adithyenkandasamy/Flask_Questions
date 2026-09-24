@@ -25,7 +25,7 @@ class Item(db.Model):
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 def disown_item(item: Item):
-    pass
+    item.owner=None
 
 if __name__ == '__main__':
     with app.app_context():

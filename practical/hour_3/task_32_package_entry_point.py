@@ -10,7 +10,7 @@ Run this file with Python. Make any necessary changes so all assertion tests pas
 """
 
 def should_run_server(module_name: str) -> bool:
-    return module_name == 'market'
+    return module_name == '__main__'
 
 if __name__ == '__main__':
     assert should_run_server('__main__') is True, "Should run server when executed directly"

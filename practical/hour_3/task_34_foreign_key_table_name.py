@@ -23,7 +23,7 @@ class User(db.Model):
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(30))
-    owner = db.Column(db.Integer(), db.ForeignKey('User.id'))
+    owner = db.Column(db.Integer(), db.ForeignKey(User.id)) # foriegn key is mentioned as with ForeignKey(User.id)
 
 if __name__ == '__main__':
     with app.app_context():

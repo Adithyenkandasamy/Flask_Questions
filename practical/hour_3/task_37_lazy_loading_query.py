@@ -24,10 +24,10 @@ class User(db.Model):
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     price = db.Column(db.Integer())
-    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    owner = db.Column(db.Integer(), db.ForeignKey(User.id))
 
 def calculate_owned_value(user: User) -> int:
-    return 0
+    return sum(item.price for item in user.items)
 
 if __name__ == '__main__':
     with app.app_context():

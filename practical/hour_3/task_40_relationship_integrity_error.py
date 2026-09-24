@@ -24,7 +24,12 @@ class Item(db.Model):
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 def safe_assign_owner(item: Item, target_user_id: int) -> bool:
-    item.owner = target_user_id
+    user = db.session.get(User, target_user_id) #use the get method to fetch the things in the db
+
+    if user is None:
+        return False
+
+    item.owner = user.id
     return True
 
 if __name__ == '__main__':

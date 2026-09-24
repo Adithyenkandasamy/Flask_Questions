@@ -21,7 +21,8 @@ class Item(db.Model):
 
 def reset_database():
     with app.app_context():
-        db.drop_all()
+        db.drop_all() # we have deleted Now we need to Create new Table 
+        db.create_all()
 
 if __name__ == '__main__':
     reset_database()

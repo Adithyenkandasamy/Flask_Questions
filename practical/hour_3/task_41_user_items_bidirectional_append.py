@@ -27,7 +27,7 @@ class Item(db.Model):
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 def add_item_to_user(user: User, item: Item):
-    pass
+    user.items.append(item)
 
 if __name__ == '__main__':
     with app.app_context():

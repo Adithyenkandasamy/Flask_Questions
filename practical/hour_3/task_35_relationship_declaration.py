@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(30))
-
+    items = db.relationship("Item", backref="owned_user",lazy = True)
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))

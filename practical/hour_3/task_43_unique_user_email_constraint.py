@@ -23,10 +23,13 @@ class User(db.Model):
 def create_user_email(email_str: str) -> bool:
     with app.app_context():
         db.create_all()
-        u = User(email=email_str)
-        db.session.add(u)
-        db.session.commit()
-        return True
+        try:
+            u = User(email=email_str)
+            db.session.add(u)
+            db.session.commit()
+            return True
+        except Exception:
+            return False
 
 if __name__ == '__main__':
     assert create_user_email("user@test.com") is True

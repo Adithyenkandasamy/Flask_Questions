@@ -24,7 +24,7 @@ class User(db.Model):
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(30))
-    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    owner = db.Column(db.Integer(), db.ForeignKey(User.id))
 
 def get_item_owner_name(item: Item) -> str:
     user = User.query.filter_by(id=item.owner).first()
